@@ -7,11 +7,11 @@ import sys, os, subprocess, re
 # up.  "name" should be a human-friendly name for the volume (it's
 # used in messages to the user), and "path" should be the absolute
 # path of the volume's mount point.
-source = { "name" : "Photos",   "path" : "/Volumes/Photos" }
+source = { "name" : "PHOTOS",   "path" : "/Volumes/PHOTOS" }
 
 # 'dest' is just like source, but for the backup destination volume -- the place where the data
 # is backed up to:
-dest   = { "name" : "Backup",   "path" : "/Volumes/Backup" }
+dest   = { "name" : "BACKUP",   "path" : "/Volumes/BACKUP" }
 
 def bash_command(command):
     """Run command in a bash subshell, and return its output as a string"""
@@ -22,10 +22,10 @@ def volume_is_mounted(volume):
     if not os.path.exists(volume):
         return False
     return True
-    #df = bash_command("df")
-    #if re.search(r"\s+" + volume + r"$", df):
-    #    return True
-    #return False
+    df = bash_command("df")
+    if re.search(r"\s+" + volume + r"$", df):
+        return True
+    return False
 
 def sys(command):
     #print command
