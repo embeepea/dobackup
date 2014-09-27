@@ -27,7 +27,7 @@ def volume_is_mounted(volume):
         return True
     return False
 
-def sys(command):
+def system(command):
     #print command
     return os.system(command)
 
@@ -41,6 +41,6 @@ if not volume_is_mounted(dest["path"]):
 
 print "\nStarting backup at %s; do not disconnect the %s or %s drive.\n" % (bash_command("date"), source["name"], dest["name"])
 
-sys("sudo rsync --archive --delete --ignore-errors --one-file-system %s/ %s" % (source["path"], dest["path"]))
+system("sudo rsync --archive --delete --ignore-errors --one-file-system %s/ %s" % (source["path"], dest["path"]))
 
 print "Backup finished at %s." % bash_command("date")
